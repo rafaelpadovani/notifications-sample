@@ -127,10 +127,10 @@ class Navbar extends React.Component {
             <AppBar position="static">
             <Toolbar>
                 <IconButton onClick={this.toggleDrawer('left', true)} className={classes.menuButton} color="inherit" aria-label="Menu">
-                <MenuIcon />
+                    <MenuIcon />
                 </IconButton>
                 <Typography variant="title" color="inherit" className={classes.flex}>
-                Phasee Assignment
+                    Phasee Assignment
                 </Typography>
                 <div>
                 <Manager>

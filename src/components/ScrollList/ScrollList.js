@@ -1,12 +1,8 @@
 import React from 'react';
 import './ScrollList.css';
-import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
-import ListItemText from '@material-ui/core/ListItemText';
-import ImageIcon from '@material-ui/icons/Image';
 import MenuList from '@material-ui/core/MenuList';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
+import Itemlist from './ItemList/ItemList';
 
 const API = 'http://www.mocky.io/v2/5b4315f12e00004c002230c3';
 
@@ -49,38 +45,23 @@ class ScrollList extends React.Component {
     
     
     render() {
+        let itemlist = null;
+
+        itemlist = (
+            <div>
+                {this.state.data.map((data, index) => {
+                    return <Itemlist
+                    type={data.type}
+                    postTitle={data.post.title}
+                    likes={data.likes}
+                    key={data.post.id}/>
+                })}
+            </div>
+        );
+
         return (
             <MenuList role="menu">
-                <ListItem button>
-                    <Avatar>
-                        <ImageIcon />
-                    </Avatar>
-                    <ListItemText 
-                        primary="Nome da Pessoa, Nome da Pessoa e mais tantas pessoas curtiram sua foto." 
-                        secondary="Jan 9, 2014" />
-                </ListItem>
-                <li>
-                    <Divider inset />
-                </li>
-                <ListItem button>
-                    <Avatar>
-                        <ImageIcon />
-                    </Avatar>
-                    <ListItemText 
-                        primary="Nome da Pessoa, Nome da Pessoa e mais tantas pessoas curtiram sua foto." 
-                        secondary="Jan 9, 2014" />
-                </ListItem>
-                <li>
-                    <Divider inset />
-                </li>
-                <ListItem button>
-                    <Avatar>
-                        <ImageIcon />
-                    </Avatar>
-                    <ListItemText 
-                        primary="Nome da Pessoa, Nome da Pessoa e mais tantas pessoas curtiram sua foto." 
-                        secondary="Jan 9, 2014" />
-                </ListItem>
+                {itemlist}
             </MenuList>
         );
     }
