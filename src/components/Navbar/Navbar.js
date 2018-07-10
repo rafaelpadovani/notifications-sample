@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationIcon from '@material-ui/icons/Notifications';
+import SettingsIcon from '@material-ui/icons/Settings';
 import Badge from '@material-ui/core/Badge';
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -129,7 +130,7 @@ class Navbar extends React.Component {
                 <IconButton onClick={this.toggleDrawer('left', true)} className={classes.menuButton} color="inherit" aria-label="Menu">
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="title" color="inherit" className={classes.flex}>
+                <Typography variant="subheading" color="inherit" className={classes.flex}>
                     Phasee Assignment
                 </Typography>
                 <div>
@@ -153,10 +154,24 @@ class Navbar extends React.Component {
                         <ClickAwayListener onClickAway={this.handleClose}>
                             <Collapse in={open} id="menu-list-collapse" style={{ transformOrigin: '0 0 0' }}>
                             <Paper style={{ margin: 3 }}>
-                                <div>
-                                    <Typography component="p">
-                                        New
-                                    </Typography>
+                                <div className={classes.root}>
+                                
+                                    <Toolbar>
+                                        <Typography variant="subheading" >
+                                            Notifications
+                                        </Typography>
+                                        <Typography variant="subheading" color="inherit" className={classes.flex}>
+                                            
+                                        </Typography>
+                                        <IconButton
+                                            aria-owns={open ? 'menu-appbar' : null}
+                                            aria-haspopup="true"
+                                            onClick={this.handleMenu}
+                                            >
+                                            <SettingsIcon />
+                                        </IconButton>
+                                    </Toolbar>
+                               
                                 </div>
                                 <ScrollList />
                             </Paper>
