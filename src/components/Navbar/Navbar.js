@@ -146,13 +146,18 @@ class Navbar extends React.Component {
                     </Target>
                     <Portal>
                         <Popper
-                        placement="bottom"
-                        eventsEnabled={open}
-                        className={classNames({ [classes.popperClose]: !open })}
-                        >
+                            placement="bottom"
+                            eventsEnabled={open}
+                            className={classNames({ [classes.popperClose]: !open })}
+                            >
                         <ClickAwayListener onClickAway={this.handleClose}>
                             <Collapse in={open} id="menu-list-collapse" style={{ transformOrigin: '0 0 0' }}>
                             <Paper style={{ margin: 3 }}>
+                                <div>
+                                    <Typography component="p">
+                                        New
+                                    </Typography>
+                                </div>
                                 <ScrollList />
                             </Paper>
                             </Collapse>

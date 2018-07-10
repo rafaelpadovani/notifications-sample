@@ -3,6 +3,9 @@ import './ScrollList.css';
 import { withStyles } from '@material-ui/core/styles';
 import MenuList from '@material-ui/core/MenuList';
 import Itemlist from './ItemList/ItemList';
+import GridList from '@material-ui/core/GridList';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 const API = 'http://www.mocky.io/v2/5b4315f12e00004c002230c3';
 
@@ -60,9 +63,11 @@ class ScrollList extends React.Component {
         );
 
         return (
-            <MenuList role="menu">
-                {itemlist}
-            </MenuList>
+            <GridList cellHeight={500} cols={1}>
+                <MenuList role="menu">
+                    {itemlist}
+                </MenuList>
+            </GridList>
         );
     }
 }
