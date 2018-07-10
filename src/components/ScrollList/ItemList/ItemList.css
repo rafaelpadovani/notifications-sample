@@ -61,8 +61,84 @@
 
 
 .contentRow {
+    display: flex;
     margin-left: 15px;
     padding: 10;
     font-size: 13px;
-    flex: 1;
+}
+
+@media only screen and (max-width: 600px) {
+    .contentRow span.namePost {
+        display: block;
+        max-width: 210px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #928d97;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .contentRow span.namePost {
+        display: block;
+        max-width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #928d97;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .contentRow span.namePost {
+        display: block;
+        max-width: 380px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #928d97;
+    }
+} 
+
+
+@media only screen and (min-width: 992px) {
+    .contentRow span.namePost {
+        display: block;
+        max-width: 390px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #928d97;
+    }
+} 
+
+@media only screen and (min-width: 1200px) {
+    .contentRow span.namePost {
+        display: block;
+        max-width: 390px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #928d97;
+    }
+} 
+
+.actionLike {
+    color: #928d97;
+}
+
+.actionComment {
+    color: #928d97;
+}
+
+.itemList {
+    width: '500px';
+}
+
+.div1 {
+    float:left;
+}
+
+.div2 {
+    float:left;
 }

@@ -37,8 +37,8 @@ class ScrollList extends React.Component{
         );
 
         return (
-            <div style={{width: '500px'}}>
-                <GridList cellHeight={500} cols={1}>
+            <div >
+                <GridList cellHeight={450} cols={1}>
                     <MenuList role="menu">
                         {itemlist}
                     </MenuList>

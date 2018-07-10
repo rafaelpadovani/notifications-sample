@@ -4,93 +4,140 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ImageIcon from '@material-ui/icons/Image';
 import Avatar from '@material-ui/core/Avatar';
+import { withStyles } from '@material-ui/core/styles';
+// import TextTruncate from 'react-text-truncate'; 
 
 // import ListItemText from '@material-ui/core/ListItemText';
 
 import './ItemList.css';
 
+const styles = theme => ({
+    root: {
+      width: '100%',
+      maxWidth: 500,
+      backgroundColor: theme.palette.background.paper,
+    },
+});
 
-const itemlist = (props) => {
+
+// const itemlist = (this.props) => {
+class itemlist extends React.Component{
+    render () {
+        const { classes } = this.props;
 
         let personNames = null;
+        let totalPersons = null;
+        let firstName = null;
+        let secondName = null;
 
-        if (props.dataArr.type === 'Like') {
-            // let firstNameLike = null;
-            // let secondNameLike = null;
-            if (props.dataArr.likes.length > 2) {
-                
+        function checkNamePerson (name) {
+            if (name !== null && name !== '') {
+                return name;
+            } else {
+                return 'Anonymous User';
+            }
+        }
+
+        if (this.props.dataArr.type === 'Like') {
+            totalPersons = this.props.dataArr.likes.length-2;
+            if (this.props.dataArr.likes.length > 2) {
+                firstName = this.props.dataArr.likes[0].name;
+                firstName = checkNamePerson(firstName);
+                secondName = this.props.dataArr.likes[1].name;
+                secondName = checkNamePerson(secondName);
                 personNames = (
                     <div className='contentRow'>
                         <p>
-                            <strong>{props.dataArr.likes[0].name + ', ' + props.dataArr.likes[1].name + ' '}</strong> 
-                            and {props.dataArr.likes.length-2} others liked your post: {' "' + props.dataArr.post.title + '"'}
+                            <strong>{firstName + ', ' + secondName + ' and ' + totalPersons + ' others '}</strong> 
+                            <span className="actionLike">liked</span> your post: 
+                            <span className="namePost">{' "' + this.props.dataArr.post.title + '"'}</span>
                         </p>
                     </div>
                 );
-            }else if (props.dataArr.likes.length === 2) {
+            }else if (this.props.dataArr.likes.length === 2) {
+                firstName = this.props.dataArr.likes[0].name;
+                firstName = checkNamePerson(firstName);
+                secondName = this.props.dataArr.likes[1].name;
+                secondName = checkNamePerson(secondName);
                 personNames = (
                     <div className='contentRow'>
                         <p>
-                            <strong>{props.dataArr.likes[0].name + ' and ' + props.dataArr.likes[1].name + ' '}</strong> 
-                            liked your post: {' "' + props.dataArr.post.title + '"'}
+                            <strong>{firstName + ' and ' + secondName + ' '}</strong> 
+                            <span className="actionLike">liked</span> your post: 
+                            <span className="namePost">{' "' + this.props.dataArr.post.title + '"'}</span>
                         </p>
                     </div>
                 );
             }else {
+                firstName = this.props.dataArr.likes[0].name;
+                firstName = checkNamePerson(firstName);
                 personNames = (
                     <div className='contentRow'>
                         <p>
-                            <strong>{props.dataArr.likes[0].name + ' '}</strong> 
-                            liked your post: {' "' + props.dataArr.post.title + '"'}
+                            <strong>{firstName + ' '}</strong> 
+                            <span className="actionLike">liked</span> your post: 
+                            <span className="namePost">{' "' + this.props.dataArr.post.title + '"'}</span>
                         </p>
                     </div>
                 );
             }
-            // console.log(props.dataArr.likes.length);
+            // console.log(this.props.dataArr.likes.length);
         }else{
-            if (props.dataArr.comments.length > 2) {
+            totalPersons = this.props.dataArr.comments.length-2;
+            if (this.props.dataArr.comments.length > 2) {
+                firstName = this.props.dataArr.comments[0].name;
+                firstName = checkNamePerson(firstName);
+                secondName = this.props.dataArr.comments[1].name;
+                secondName = checkNamePerson(secondName);
                 personNames = (
                     <div className='contentRow'>
                         <p>
-                            <strong>{props.dataArr.comments[0].name + props.dataArr.comments[1].name + ' '}</strong>
-                            and {props.dataArr.comments.length-2} others commented on your post: {' "' + props.dataArr.post.title + '"'}
+                            <strong>{firstName  + ', ' + secondName + ' and ' + totalPersons + ' others '}</strong>
+                            <span className="actionComment">commented</span> on your post: 
+                            <span className="namePost">{' "' + this.props.dataArr.post.title + '"'}</span>
                         </p>
                     </div>
                 );
-            }else if (props.dataArr.comments.length === 2) {
+            }else if (this.props.dataArr.comments.length === 2) {
+                firstName = this.props.dataArr.comments[0].name;
+                firstName = checkNamePerson(firstName);
+                secondName = this.props.dataArr.comments[1].name;
+                secondName = checkNamePerson(secondName);
                 personNames = (
                     <div className='contentRow'>
                         <p>
-                            <strong>{props.dataArr.comments[0].name + ' and ' + props.dataArr.comments[1].name + ' '}</strong> 
-                            commented on your post: {' "' + props.dataArr.post.title + '"'}
+                            <strong>{firstName + ' and ' + secondName + ' '}</strong> 
+                            <span className="actionComment">commented</span> on your post: 
+                            <span className="namePost">{' "' + this.props.dataArr.post.title + '"'}</span>
                         </p>
                      </div>
                 );
             }else {
+                firstName = this.props.dataArr.comments[0].name;
+                firstName = checkNamePerson(firstName);
                 personNames = (
                     <div className='contentRow'>
                         <p>
-                            <strong>{props.dataArr.comments[0].name + ' '}</strong> 
-                            commented on your post: {' "' + props.dataArr.post.title + '"'}
+                            <strong>{firstName + ' '}</strong> 
+                            <span className="actionComment">commented</span> on your post: 
+                            <span className="namePost">{' "' + this.props.dataArr.post.title + '"'}</span>
                         </p>
                     </div>
                 );
             }
-            // console.log(props.dataArr.comments.length);
+            // console.log(this.props.dataArr.comments.length);
         }
         
-
-
     return (
-        <div>
+        <div className={classes.root}>
             <li>
                 <Divider />
             </li>
             <ListItem button>
                 <div>
-                    <div className={props.dataArr.type === 'Like' ? 'circle-responsive-like' : 'circle-responsive-comment'}>
+                    <div className={this.props.dataArr.type === 'Like' ? 'circle-responsive-like' : 'circle-responsive-comment'}>
                         <div className="circle-content">
-                            <span>{props.dataArr.type === 'Like' ? 'L' : 'C'}</span>
+                            <span>{this.props.dataArr.type === 'Like' ? 'L' : 'C'}</span>
                         </div>
                     </div>
                 </div>
@@ -104,5 +151,6 @@ const itemlist = (props) => {
         </div>
     );
 };
+};
 
-export default itemlist;
+export default withStyles(styles)(itemlist);
