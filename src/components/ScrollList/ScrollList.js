@@ -1,9 +1,10 @@
 import React from 'react';
-import './ScrollList.css';
 import { withStyles } from '@material-ui/core/styles';
 import MenuList from '@material-ui/core/MenuList';
 import Itemlist from './ItemList/ItemList';
 import GridList from '@material-ui/core/GridList';
+
+import './ScrollList.css';
 
 
 const styles = {
@@ -36,11 +37,13 @@ class ScrollList extends React.Component{
         );
 
         return (
-            <GridList cellHeight={500} cols={1}>
-                <MenuList role="menu">
-                    {itemlist}
-                </MenuList>
-            </GridList>
+            <div style={{width: '500px'}}>
+                <GridList cellHeight={500} cols={1}>
+                    <MenuList role="menu">
+                        {itemlist}
+                    </MenuList>
+                </GridList>
+            </div>
         );
     }
 }
