@@ -31,6 +31,7 @@ class ScrollList extends React.Component{
                 {this.props.arrayData.map((data, index) => {
                     return <Itemlist 
                         dataArr={data}
+                        timesOpened={this.props.opened}
                         key={data.post.id.concat(index)}/>
                 })}
             </div>

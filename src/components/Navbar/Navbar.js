@@ -12,8 +12,7 @@ import Badge from '@material-ui/core/Badge';
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+import { mailFolderListItems } from './tileData';
 
 import { Manager, Target, Popper } from 'react-popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -21,6 +20,9 @@ import Collapse from '@material-ui/core/Collapse';
 import Paper from '@material-ui/core/Paper';
 import Portal from '@material-ui/core/Portal';
 import classNames from 'classnames';
+
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 
 import ScrollList from '../ScrollList/ScrollList';
 
@@ -49,10 +51,12 @@ class Navbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            timesOpened: 0,
             data: [],
             open: false,
             left: false,
             anchorEl: null,
+            anchorEl2: null,
             notifications : [{
                 id: 1,
                 title: 'some title', // not required
@@ -87,24 +91,32 @@ class Navbar extends React.Component {
 
 
     handleMenu = event => {
-        this.setState({ anchorEl: event.currentTarget, open: true });
+        this.setState({ anchorEl: event.currentTarget, open: true, timesOpened: this.state.timesOpened + 1 });
     };
 
     handleClose = () => {
         this.setState({ anchorEl: null });
     };
 
+    handleMenu2 = event => {
+        this.setState({ anchorEl2: event.currentTarget });
+      };
+    
+      handleClose2 = () => {
+        this.setState({ anchorEl2: null });
+      };
+
     render() {
         // console.log(this.state.data);
         const { classes } = this.props;
         const { anchorEl } = this.state;
+        const { anchorEl2 } = this.state;
         const open = Boolean(anchorEl);
+        const open2 = Boolean(anchorEl2);
 
         const sideList = (
         <div className={classes.list}>
             <List>{mailFolderListItems}</List>
-            <Divider />
-            <List>{otherMailFolderListItems}</List>
         </div>
         );
 
@@ -131,7 +143,7 @@ class Navbar extends React.Component {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="subheading" color="inherit" className={classes.flex}>
-                    Phasee Assignment
+                    Phrasee Assignment
                 </Typography>
                 <div>
                 <Manager>
@@ -164,17 +176,37 @@ class Navbar extends React.Component {
                                             
                                         </Typography>
                                         <IconButton
-                                            aria-owns={open ? 'menu-appbar' : null}
+                                            aria-owns={open ? 'menu-appbar2' : null}
                                             aria-haspopup="true"
-                                            onClick={this.handleMenu}
+                                            onClick={this.handleMenu2}
                                             >
                                             <SettingsIcon />
                                         </IconButton>
+
+                                        <Menu
+                                            id="menu-appbar2"
+                                            anchorEl={anchorEl}
+                                            anchorOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            }}
+                                            transformOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            }}
+                                            open={open2}
+                                            onClose={this.handleClose2}
+                                            >
+                                            <MenuItem onClick={this.handleClose2}>Mark all as read</MenuItem>
+                    
+                                        </Menu>
+
                                     </Toolbar>
                                
                                 </div>
                                 <ScrollList
-                                    arrayData={this.state.data} />
+                                    arrayData={this.state.data}
+                                    opened={this.state.timesOpened} />
                             </Paper>
                             </Collapse>
                         </ClickAwayListener>

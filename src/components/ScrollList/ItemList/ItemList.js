@@ -11,17 +11,25 @@ import { withStyles } from '@material-ui/core/styles';
 
 import './ItemList.css';
 
+
+
 const styles = theme => ({
     root: {
       width: '100%',
       maxWidth: 500,
-      backgroundColor: theme.palette.background.paper,
     },
 });
 
 
 // const itemlist = (this.props) => {
 class itemlist extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            colorBack: '#f7f9ff',
+        }
+    }
+
     render () {
         const { classes } = this.props;
 
@@ -127,9 +135,8 @@ class itemlist extends React.Component{
             }
             // console.log(this.props.dataArr.comments.length);
         }
-        
     return (
-        <div className={classes.root}>
+        <div className={classes.root} style={this.props.timesOpened > 1 ? { backgroundColor: '#fff'} : { backgroundColor: '#f7f9ff'}}>
             <li>
                 <Divider />
             </li>
