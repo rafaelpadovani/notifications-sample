@@ -173,7 +173,8 @@ class Navbar extends React.Component {
                                     </Toolbar>
                                
                                 </div>
-                                <ScrollList />
+                                <ScrollList
+                                    arrayData={this.state.data} />
                             </Paper>
                             </Collapse>
                         </ClickAwayListener>

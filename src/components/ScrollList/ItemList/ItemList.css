@@ -25,24 +25,43 @@
     line-height:2;
 }
 
-.circle-responsive {
+.circle-responsive-like {
     border-radius: 50%;
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
     z-index: 1;
     position: relative;
-    background: #4679BD;
+    background: #ffcc5c;
     top: 15px;
     left: 45px;
 }
 
+.circle-responsive-comment {
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    z-index: 1;
+    position: relative;
+    background: #588c7e;
+    top: 15px;
+    left: 45px;
+}
+
+
 .circle-content {
     color: #fff;
     float: left;
-    line-height: 1;
-    font-size: 8px;
+    line-height: 1.2;
+    font-size: 9px;
     margin-top: -0.5em;
     padding-top: 50%;
     text-align: center;
     width: 100%;
+}
+
+
+.contentRow {
+    padding: 10;
+    font-size: 13px;
+    flex: 1;
 }

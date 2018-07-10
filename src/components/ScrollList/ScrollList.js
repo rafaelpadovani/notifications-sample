@@ -5,7 +5,6 @@ import MenuList from '@material-ui/core/MenuList';
 import Itemlist from './ItemList/ItemList';
 import GridList from '@material-ui/core/GridList';
 
-const API = 'http://www.mocky.io/v2/5b4315f12e00004c002230c3';
 
 const styles = {
     row: {
@@ -21,41 +20,17 @@ const styles = {
     },
   };
 
-class ScrollList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: [],
-            loading: false,
-            hasMore: true,
-        }
-
-
-        fetch(API)
-        .then((response) => {
-            if (response.ok) {
-            return response.json();
-            } else {
-            throw new Error('Something went wrong ...');
-            }
-        })
-        .then((json) => this.setState({ data: json }))
-        .catch(error => this.setState({ error }));
-           
-    }
-    
+class ScrollList extends React.Component{
     
     render() {
         let itemlist = null;
 
         itemlist = (
             <div>
-                {this.state.data.map((data, index) => {
-                    return <Itemlist
-                    type={data.type}
-                    postTitle={data.post.title}
-                    likes={data.likes}
-                    key={data.post.id}/>
+                {this.props.arrayData.map((data, index) => {
+                    return <Itemlist 
+                        dataArr={data}
+                        key={data.post.id.concat(index)}/>
                 })}
             </div>
         );
