@@ -4,7 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const API = 'http://www.mocky.io/v2/5b4315f12e00004c002230c3';
+const API = 'https://www.mocky.io/v2/5b4315f12e00004c002230c3';
 
 
 
