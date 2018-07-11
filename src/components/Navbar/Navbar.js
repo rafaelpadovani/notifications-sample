@@ -26,7 +26,6 @@ import Menu from '@material-ui/core/Menu';
 
 import ScrollList from '../ScrollList/ScrollList';
 
-const API = 'http://www.mocky.io/v2/5b4315f12e00004c002230c3';
 
 const styles = {
   root: {
@@ -69,16 +68,7 @@ class Navbar extends React.Component {
                 date: '09/12/2016' // not required
             }]
         };
-        fetch(API)
-        .then((response) => {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error('Something went wrong ...');
-            }
-          })
-          .then((json) => this.setState({ data: json }))
-          .catch(error => this.setState({ error }));
+        
     }
 
 
@@ -102,9 +92,9 @@ class Navbar extends React.Component {
         this.setState({ anchorEl2: event.currentTarget });
       };
     
-      handleClose2 = () => {
-        this.setState({ anchorEl2: null });
-      };
+    handleClose2 = () => {
+        this.setState({ anchorEl2: null, timesOpened: this.state.timesOpened + 1 });
+    };
 
     render() {
         // console.log(this.state.data);
@@ -124,7 +114,7 @@ class Navbar extends React.Component {
 
         if (!this.state.open) {
             badgeNotf = (
-                <Badge badgeContent={this.state.data.length > 99 ? '+99' : this.state.data.length} color="secondary">
+                <Badge badgeContent={this.props.dataApi.length > 99 ? '+99' : this.props.dataApi.length} color="secondary">
                     <NotificationIcon />
                 </Badge>
             );
@@ -146,73 +136,73 @@ class Navbar extends React.Component {
                     Phrasee Assignment
                 </Typography>
                 <div>
-                <Manager>
-                    <Target>
-                        <IconButton
-                        aria-owns={open ? 'menu-appbar' : null}
-                        aria-haspopup="true"
-                        onClick={this.handleMenu}
-                        color="inherit"
-                        >
-                        {badgeNotf}
-                        </IconButton>
-                    </Target>
-                    <Portal>
-                        <Popper
-                            placement="bottom"
-                            eventsEnabled={open}
-                            className={classNames({ [classes.popperClose]: !open })}
+                    <Manager>
+                        <Target>
+                            <IconButton
+                            aria-owns={open ? 'menu-appbar' : null}
+                            aria-haspopup="true"
+                            onClick={this.handleMenu}
+                            color="inherit"
                             >
-                        <ClickAwayListener onClickAway={this.handleClose}>
-                            <Collapse in={open} id="menu-list-collapse" style={{ transformOrigin: '0 0 0' }}>
-                            <Paper style={{ margin: 3 }}>
-                                <div className={classes.root}>
+                            {badgeNotf}
+                            </IconButton>
+                        </Target>
+                        <Portal>
+                            <Popper
+                                placement="bottom"
+                                eventsEnabled={open}
+                                className={classNames({ [classes.popperClose]: !open })}
+                                >
+                            <ClickAwayListener onClickAway={this.handleClose}>
+                                <Collapse in={open} id="menu-list-collapse" style={{ transformOrigin: '0 0 0' }}>
+                                <Paper style={{ margin: 3 }}>
+                                    <div className={classes.root}>
+                                    
+                                        <Toolbar>
+                                            <Typography variant="subheading" style={{color: '#787881'}} >
+                                                Notifications
+                                            </Typography>
+                                            <Typography variant="subheading" color="inherit" className={classes.flex}>
+                                                
+                                            </Typography>
+                                            <IconButton
+                                                aria-owns={open2 ? 'menu-appbar2' : null}
+                                                aria-haspopup="true"
+                                                onClick={this.handleMenu2}
+                                                >
+                                                <SettingsIcon />
+                                            </IconButton>
+
+                                            <Menu
+                                                id="menu-appbar2"
+                                                anchorEl={anchorEl2}
+                                                anchorOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                open={open2}
+                                                
+                                                >
+                                                <MenuItem onClick={this.handleClose2}>Mark all as read</MenuItem>
+                        
+                                            </Menu>
+
+                                        </Toolbar>
                                 
-                                    <Toolbar>
-                                        <Typography variant="subheading" style={{color: '#787881'}} >
-                                            Notifications
-                                        </Typography>
-                                        <Typography variant="subheading" color="inherit" className={classes.flex}>
-                                            
-                                        </Typography>
-                                        <IconButton
-                                            aria-owns={open ? 'menu-appbar2' : null}
-                                            aria-haspopup="true"
-                                            onClick={this.handleMenu2}
-                                            >
-                                            <SettingsIcon />
-                                        </IconButton>
-
-                                        <Menu
-                                            id="menu-appbar2"
-                                            anchorEl={anchorEl}
-                                            anchorOrigin={{
-                                                vertical: 'top',
-                                                horizontal: 'right',
-                                            }}
-                                            transformOrigin={{
-                                                vertical: 'top',
-                                                horizontal: 'right',
-                                            }}
-                                            open={open2}
-                                            onClose={this.handleClose2}
-                                            >
-                                            <MenuItem onClick={this.handleClose2}>Mark all as read</MenuItem>
-                    
-                                        </Menu>
-
-                                    </Toolbar>
-                               
-                                </div>
-                                <ScrollList
-                                    arrayData={this.state.data}
-                                    opened={this.state.timesOpened} />
-                            </Paper>
-                            </Collapse>
-                        </ClickAwayListener>
-                        </Popper>
-                    </Portal>
-                </Manager>
+                                    </div>
+                                    <ScrollList
+                                        arrayData={this.props.dataApi}
+                                        opened={this.state.timesOpened} />
+                                </Paper>
+                                </Collapse>
+                            </ClickAwayListener>
+                            </Popper>
+                        </Portal>
+                    </Manager>
                 </div>
 
 
