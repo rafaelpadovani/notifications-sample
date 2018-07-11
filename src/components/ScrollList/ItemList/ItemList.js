@@ -37,6 +37,33 @@ class itemlist extends React.Component{
         let totalPersons = null;
         let firstName = null;
         let secondName = null;
+        let avatarImage = null;
+
+        if (this.props.dataArr.type === 'Like') {
+            if (!this.props.dataArr.likes[0].image) {
+                avatarImage = (
+                    <Avatar>
+                        <AccountCircle />
+                    </Avatar>
+                );
+            } else {
+                avatarImage = (
+                    <Avatar className={classes.avatar} src={this.props.dataArr.likes[0].image}/>
+                );
+            }
+        } else {
+            if (!this.props.dataArr.comments[0].image) {
+                avatarImage = (
+                    <Avatar>
+                        <AccountCircle />
+                    </Avatar>
+                );
+            } else {
+                avatarImage = (
+                    <Avatar className={classes.avatar} src={this.props.dataArr.comments[0].image}/>
+                );
+            }
+        }
 
         function checkNamePerson (name) {
             if (name !== null && name !== '') {
@@ -148,10 +175,8 @@ class itemlist extends React.Component{
                         </div>
                     </div>
                 </div>
-                
-                <Avatar>
-                    <AccountCircle />
-                </Avatar>
+
+                {avatarImage}
                 {personNames}
 
             </ListItem>
