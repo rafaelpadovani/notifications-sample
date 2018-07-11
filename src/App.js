@@ -6,15 +6,18 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const API = 'http://www.mocky.io/v2/5b4315f12e00004c002230c3';
 
+
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      isLoading: false,
+      isLoading: true,
+      dataIndexes: [],
     }
 
-    this.setState({ isLoading: true });
+    
 
     fetch(API)
         .then((response) => {
@@ -24,7 +27,14 @@ class App extends Component {
               throw new Error('Something went wrong ...');
             }
           })
-          .then((json) => this.setState({ data: json, isLoading: false }))
+          .then((json) => {
+            let arrayToState = [];
+            for (let i = 0; i < json.length; i++) { 
+              arrayToState.push(true);
+            }
+            this.setState({ data: json, isLoading: false, dataIndexes : arrayToState})
+            
+          })
           .catch(error => this.setState({ error }));
   }
 
@@ -36,7 +46,9 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Navbar dataApi={this.state.data} />
+        <Navbar 
+          dataApi={this.state.data}
+          arrayIndexes={this.state.dataIndexes}  />
       </div>
     );
   }

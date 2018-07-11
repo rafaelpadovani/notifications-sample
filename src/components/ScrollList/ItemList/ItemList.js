@@ -167,7 +167,13 @@ class itemlist extends React.Component{
             <li>
                 <Divider />
             </li>
-            <ListItem button style={{paddingLeft: 10}}>
+            <ListItem onClick={this.props.clicked} button style={{paddingLeft: 10}}>
+                {this.props.statusView && this.props.timesOpened === 1 && (
+                    <div className="circle-responsive-viwed">
+
+                    </div>
+                )}
+                
                 <div>
                     <div className={this.props.dataArr.type === 'Like' ? 'circle-responsive-like' : 'circle-responsive-comment'}>
                         <div className="circle-content">

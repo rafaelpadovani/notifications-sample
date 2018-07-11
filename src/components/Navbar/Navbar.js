@@ -196,7 +196,8 @@ class Navbar extends React.Component {
                                     </div>
                                     <ScrollList
                                         arrayData={this.props.dataApi}
-                                        opened={this.state.timesOpened} />
+                                        opened={this.state.timesOpened}
+                                        arrayIndexes={this.props.arrayIndexes} />
                                 </Paper>
                                 </Collapse>
                             </ClickAwayListener>

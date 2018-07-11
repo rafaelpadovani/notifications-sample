@@ -4,6 +4,15 @@
     left: 8px;
 }
 
+.circle-responsive-viwed {
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    background: #3e54af;
+    left: 13px;
+}
+
 .circle-responsive-like {
     border-radius: 50%;
     width: 17px;

@@ -20,6 +20,20 @@ const styles = {
   };
 
 class ScrollList extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            statusView : [],
+        }
+        this.state.statusView = this.props.arrayIndexes;
+    }
+
+    clickItemHandle = (index) => {
+        let arrayToState = [...this.props.arrayIndexes];
+        arrayToState[index] = false;
+        // console.log(arrayToState);
+        this.setState({statusView: arrayToState});
+    }
     
     render() {
         let itemlist = null;
@@ -28,6 +42,8 @@ class ScrollList extends React.Component{
             <div>
                 {this.props.arrayData.map((data, index) => {
                     return <Itemlist 
+                        clicked={() => this.clickItemHandle(index)}
+                        statusView={this.state.statusView[index]}
                         dataArr={data}
                         timesOpened={this.props.opened}
                         key={data.post.id.concat(index)}/>
