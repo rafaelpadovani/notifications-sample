@@ -4,34 +4,13 @@
     left: 8px;
 }
 
-.advanced {
-    border-radius: 50%;
-    position: relative;
-    top: 15px;
-    left: 40px;
-    z-index: 10;
-	width: 15px;
-	height: 15px;
-	
-    background: #4679BD; 
-    -moz-border-radius: 50%; 
-    -webkit-border-radius: 50%; 
-}
-
-.advanced div{
-    color: #fff;
-    text-align: center;
-    font-size: 8px;
-    line-height:2;
-}
-
 .circle-responsive-like {
     border-radius: 50%;
     width: 17px;
     height: 17px;
     z-index: 1;
     position: relative;
-    background: #ffcc5c;
+    background: #218d80;
     top: 15px;
     left: 45px;
 }
@@ -42,7 +21,7 @@
     height: 17px;
     z-index: 1;
     position: relative;
-    background: #588c7e;
+    background: #ae4747;
     top: 15px;
     left: 45px;
 }
@@ -67,6 +46,10 @@
     font-size: 13px;
 }
 
+.contentRow strong {
+    color: #3e54af;
+}
+
 @media only screen and (max-width: 600px) {
     .contentRow span.namePost {
         display: block;
@@ -74,7 +57,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: #928d97;
+        color: #787881;
     }
 }
 
@@ -85,7 +68,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: #928d97;
+        color: #787881;
     }
 }
 
@@ -96,7 +79,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: #928d97;
+        color: #787881;
     }
 } 
 
@@ -108,7 +91,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: #928d97;
+        color: #787881;
     }
 } 
 
@@ -119,16 +102,16 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: #928d97;
+        color: #787881;
     }
 } 
 
 .actionLike {
-    color: #928d97;
+    color: #787881;
 }
 
 .actionComment {
-    color: #928d97;
+    color: #787881;
 }
 
 .itemList {

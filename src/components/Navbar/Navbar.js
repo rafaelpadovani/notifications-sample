@@ -169,7 +169,7 @@ class Navbar extends React.Component {
                                 <div className={classes.root}>
                                 
                                     <Toolbar>
-                                        <Typography variant="subheading" >
+                                        <Typography variant="subheading" style={{color: '#787881'}} >
                                             Notifications
                                         </Typography>
                                         <Typography variant="subheading" color="inherit" className={classes.flex}>

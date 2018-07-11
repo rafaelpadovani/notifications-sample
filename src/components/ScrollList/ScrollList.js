@@ -4,8 +4,6 @@ import MenuList from '@material-ui/core/MenuList';
 import Itemlist from './ItemList/ItemList';
 import GridList from '@material-ui/core/GridList';
 
-import './ScrollList.css';
-
 
 const styles = {
     row: {

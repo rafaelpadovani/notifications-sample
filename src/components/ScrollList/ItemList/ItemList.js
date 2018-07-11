@@ -2,7 +2,7 @@ import React from 'react';
 
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ImageIcon from '@material-ui/icons/Image';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 // import TextTruncate from 'react-text-truncate'; 
@@ -140,7 +140,7 @@ class itemlist extends React.Component{
             <li>
                 <Divider />
             </li>
-            <ListItem button>
+            <ListItem button style={{paddingLeft: 10}}>
                 <div>
                     <div className={this.props.dataArr.type === 'Like' ? 'circle-responsive-like' : 'circle-responsive-comment'}>
                         <div className="circle-content">
@@ -150,7 +150,7 @@ class itemlist extends React.Component{
                 </div>
                 
                 <Avatar>
-                    <ImageIcon />
+                    <AccountCircle />
                 </Avatar>
                 {personNames}
 
