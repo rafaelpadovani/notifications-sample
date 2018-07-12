@@ -23,15 +23,15 @@ class ScrollList extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            statusView : [],
+            statusView : this.props.arrayIndexes,
         }
-        this.state.statusView = this.props.arrayIndexes;
+        console.log(this.state.statusView);
     }
 
     clickItemHandle = (index) => {
-        let arrayToState = [...this.props.arrayIndexes];
+        let arrayToState = [...this.state.statusView];
         arrayToState[index] = false;
-        // console.log(arrayToState);
+        console.log(arrayToState);
         this.setState({statusView: arrayToState});
     }
     
