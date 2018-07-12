@@ -163,7 +163,7 @@ class itemlist extends React.Component{
             // console.log(this.props.dataArr.comments.length);
         }
     return (
-        <div className={classes.root} style={this.props.timesOpened > 1 ? { backgroundColor: '#fff'} : { backgroundColor: '#f7f9ff'}}>
+        <div className={classes.root} style={this.props.statusView && this.props.timesOpened === 1 ? { backgroundColor: '#f7f9ff'} : { backgroundColor: '#fff'}}>
             <li>
                 <Divider />
             </li>
